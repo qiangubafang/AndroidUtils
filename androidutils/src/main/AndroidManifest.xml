@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 把本文内容，按需复制到 项目清单文件里 -->
+    <queries>
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
+        </intent>
+    </queries>
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+
+    <!-- logview弹窗日志，悬浮窗需要手动打开 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <!-- notify -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+
+
+
+    <application>
+        <!-- utils 模块 -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <activity
+            android:name="org.tcshare.activity.TCRequestPermissionActivity"
+            android:theme="@style/Theme.Transparent" />
+        <activity
+            android:name="org.tcshare.activity.TCUpOpenSettingActivity"
+            android:theme="@style/Theme.Transparent" />
+        <activity
+            android:name="org.tcshare.activity.TCSelectOnePictureActivity"
+            android:theme="@style/Theme.Transparent" />
+        <activity
+            android:name="org.tcshare.activity.TCFileSelectorActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <!-- logview -->
+        <service
+            android:name="org.tcshare.logview.logcatviewer.service.LogcatViewerService"
+            android:label="LogcatLoggerService" />
+        <service android:name="org.tcshare.logview.logcatviewer.service.LogcatViewerFloatingView"
+            android:label="LogcatLoggerFloatingView" />
+    </application>
+</manifest>

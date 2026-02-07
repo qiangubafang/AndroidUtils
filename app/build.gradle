@@ -1,0 +1,92 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "org.tcshare.app"
+        minSdkVersion 22
+        targetSdkVersion 34
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
+            buildConfigField "boolean", "IS_DEBUG", "false" // 默认debug, 产品环境会覆盖该值
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            buildConfigField "boolean", "IS_DEBUG", "true"
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+        }
+    }
+
+//    自助设备 有系统权限时使用
+ signingConfigs {
+        debug {
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storeFile file('../keystore/sys.keystore')
+            storePassword 'android'
+        }
+        release {
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storeFile file('../keystore/sys.keystore')
+            storePassword 'android'
+        }
+    }
+
+    sourceSets {
+        main {
+            java.srcDirs = ['src/main/java-public',  'src/main/java-zxing']
+            res.srcDirs = [ 'src/main/res-public', 'src/main/res-zxing']
+            jniLibs.srcDirs = ['src/main/jni-libs-public']
+            assets.srcDirs = [ 'src/main/assets-public']
+        }
+    }
+
+    compileOptions{
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lint {
+        abortOnError false
+    }
+    namespace 'org.tcshare.app'
+}
+
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+    implementation "androidx.constraintlayout:constraintlayout:2.1.4"
+
+    implementation 'com.google.zxing:core:3.4.0'
+
+    // 工具库使用的版本，同步修改
+    implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation "com.google.android.material:material:1.10.0"
+    implementation "com.squareup.okhttp3:okhttp:5.0.0-alpha.3"
+    implementation "com.google.code.gson:gson:2.10.1"
+    implementation 'com.github.bumptech.glide:glide:4.13.2'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.5.0'
+    implementation 'com.orhanobut:logger:2.2.0'
+
+
+    implementation project(path: ':androidutils')
+
+    // 崩溃捕获
+    implementation 'com.iqiyi.xcrash:xcrash-android-lib:3.0.0'
+
+    // Modbus 协议， 使用jar包， 这个引用换库了， 下载不下来
+    //implementation 'com.infiniteautomation:modbus4j:3.0.3'
+}

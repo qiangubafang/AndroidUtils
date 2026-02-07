@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<org.tcshare.widgets.DragLeft2RightExitFrameLayout
+    android:id="@+id/dragExit"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            >
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:lines="1"
+                android:text="title"
+                android:textColor="@android:color/white"
+                android:textSize="16dp"
+                />
+
+            <ImageView
+                android:id="@+id/ic_back"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                app:srcCompat="@drawable/ic_back" />
+
+        </RelativeLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="1.拖拽退出activity\n  "/>
+        </FrameLayout>
+    </LinearLayout>
+</org.tcshare.widgets.DragLeft2RightExitFrameLayout>

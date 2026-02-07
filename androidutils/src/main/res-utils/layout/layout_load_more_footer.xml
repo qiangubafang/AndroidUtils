@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<org.tcshare.widgets.swipetoloadlayout.LoadMoreFooterView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/swipe_load">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/refresh_header_height_60"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/tvLoadMore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:text="加载更多"
+            android:textColor="@color/textColorPrimary" />
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            style="?android:attr/progressBarStyleSmallInverse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/tvLoadMore"/>
+    </RelativeLayout>
+
+</org.tcshare.widgets.swipetoloadlayout.LoadMoreFooterView>

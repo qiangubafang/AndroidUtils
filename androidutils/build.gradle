@@ -1,0 +1,72 @@
+plugins {
+    id 'com.android.library'
+}
+
+repositories {
+    maven { url "https://maven.aliyun.com/repository/public" }
+    maven { url 'https://jitpack.io' }
+    google()
+    mavenCentral()
+}
+
+android {
+    compileSdk 34
+
+    defaultConfig {
+        minSdkVersion 22
+        targetSdkVersion 34
+
+        consumerProguardFiles "consumer-rules.pro"
+    }
+    buildFeatures{
+        aidl true
+    }
+
+    sourceSets {
+        main {
+            java.srcDirs = [ 'src/main/java-utils']
+            res.srcDirs = ['src/main/res-utils']
+            jniLibs.srcDirs = ['src/main/jni-source-public']
+            assets.srcDirs = ['src/main/assets-utils']
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lint {
+        abortOnError false
+    }
+    namespace 'org.tcshare.androidutils'
+
+}
+
+dependencies {
+
+    implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation "com.google.android.material:material:1.10.0"
+    implementation "com.squareup.okhttp3:okhttp:5.0.0-alpha.3"
+    implementation "com.google.code.gson:gson:2.10.1"
+    implementation 'com.github.bumptech.glide:glide:4.13.2'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.5.0'
+    implementation 'com.orhanobut:logger:2.2.0'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+}
+
+ext {
+    PUBLISH_GROUP_ID = "com.rangotec.utils"        //项目包名
+    PUBLISH_ARTIFACT_ID = 'AndroidUtils'            //项目名
+    PUBLISH_VERSION = "4.0.9"                    //版本号
+}
+apply from: "${rootProject.projectDir}/publish-mavencentral.gradle"
