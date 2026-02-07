@@ -2,6 +2,9 @@
 
 该功能库为android 7.1.2 智能终端常用功能的集合 <br/>
 
+Gitee部分内容看不到， 迁移回Github。 
+文档地址： https://rangotec.com/blog/177.html
+
 ### 目录说明： 
 ```
  src/main/java-public        应用程序代码 <br/>
@@ -12,12 +15,29 @@
          /jni-source-utils   native 源码 <br/>
 ```            
            
-### 工具功能
+### 工具功能列表
 #### websocket 功能
 #### 蓝牙GATT通信，自动组装包。
 BTUtil.java
+```agsl
+        // 二次组装数据结构，可选。
+        PacketUtil packetUtil = new PacketUtil((byte) 0x68, (byte) 0x55, (byte) 0x16, 512);
+        btUtil = new BTUtil(null,
+                "0000fff1-0000-1000-8000-00805f9b34fb",
+                "0000fff2-0000-1000-8000-00805f9b34fb",
+                1000,
+                packetUtil);
+        btUtil.setDEBUG(true);
+        btUtil.setActivity(this);
+        
+        btUtil.searchBT(); // 搜索并连接蓝牙
+        btUtil.addObserver(cb); // 接收信息
+        btUtil.sendData(bytes); // 发送信息
+        
+```
 #### AES加密
 AESEncryptUtil.java
+
 #### 图片模糊工具
 BlurBuilder.java
 #### 相机工具
@@ -73,7 +93,9 @@ CameraUtils.java
 CameraSufaceView.java
 #### 贝塞尔曲线相关
 DotsTextView.java // 贝塞尔曲线实现的等待点动画，
-BeizerEvaluator.java // 贝塞尔曲线计算工具 
+BeizerEvaluator.java // 贝塞尔曲线计算工具
+效果示例： Android widget - 直播右下角点击刷礼物特效 https://rangotec.com/blog/60.html
+
 #### 侧滑消失的行为，列表里的某个条目，侧滑删除
 MySwipeDismissBehavior.java
 #### 可展开列表数据适配器
@@ -82,14 +104,18 @@ ExpandableRecyclerViewAdapter.java
 WebViewFragment.java
 #### 捕获应用崩溃信息用 
 CrashHandler.java 
+
 #### dialog
 LoadingDialog.java
 MsgDialogUtil.java
 ### 自定义的widget挂件
-#### 仪表盘
+#### Android widget - 完全可配的炫酷仪表盘
 GangeView.java 
-#### 雷达图
-RadarView.java 
+效果展示： https://rangotec.com/blog/57.html
+#### 雷达搜索图，根据信号强度，显示点的远近
+RadarView.java
+效果展示： https://rangotec.com/blog/59.html
+
 #### 九宫格选择图片
 ```
 安卓11 之后 manifest 根节点下需要添加：
@@ -102,7 +128,8 @@ RadarView.java
 
 SelectPictureGridView.java 
 #### 选择一张图片工具类
-SelectOnePicture.java     
+SelectOnePicture.java    
+
 #### 去掉色彩，布局变成灰色的工具
 StaturationView.java    
 #### 底部弹出选择列表
@@ -113,7 +140,6 @@ DragLeft2RightExitFrameLayout.java
 CircleImageView.java  
 #### 左上角斜着的标签样式
 LabelView.java  
-
 
 
 ### 串口|RS485
