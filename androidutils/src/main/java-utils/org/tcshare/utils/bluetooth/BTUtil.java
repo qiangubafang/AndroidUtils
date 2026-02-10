@@ -158,7 +158,7 @@ public class BTUtil extends Observable {
                         Toast.makeText(act, "收到MTU变动:" + mtu, Toast.LENGTH_SHORT).show();
                     });*/
                     supportedMTU = mtu - 3;
-                    Log.e(TAG, "onMtuChanged:" + mtu + "support MTU " + (supportedMTU)+ ":" + status);
+                    Log.e(TAG, "onMtuChanged:" + mtu + ", support MTU " + (supportedMTU)+ ", status:" + status);
                 }
             }
 

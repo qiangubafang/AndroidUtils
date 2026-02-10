@@ -132,6 +132,11 @@ SelectOnePicture.java
 
 #### 去掉色彩，布局变成灰色的工具
 StaturationView.java    
+```agsl
+    // 使用方法 0:全灰色， 1:全彩色
+    SaturationViewUtil.getInstance().saturationView(devContainer, 0f);
+```
+
 #### 底部弹出选择列表
 BottomListDialog.java   
 #### 从左滑动到右侧退出的布局

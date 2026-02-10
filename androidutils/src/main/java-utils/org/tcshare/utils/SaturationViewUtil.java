@@ -9,17 +9,17 @@ import android.view.View;
  * 去掉色彩，变灰
  * @author 爱T鱼
  */
-public class SaturationView {
+public class SaturationViewUtil {
     private final Paint paint = new Paint();
     private final ColorMatrix cm = new ColorMatrix();
-    private SaturationView(){
+    private SaturationViewUtil(){
 
     }
-    private static SaturationView instance;
-    public static SaturationView getInstance(){
-        synchronized (SaturationView.class) {
+    private static SaturationViewUtil instance;
+    public static SaturationViewUtil getInstance(){
+        synchronized (SaturationViewUtil.class) {
             if (instance == null) {
-                instance = new SaturationView();
+                instance = new SaturationViewUtil();
             }
         }
         return instance;
