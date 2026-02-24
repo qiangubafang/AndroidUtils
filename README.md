@@ -1,13 +1,13 @@
 # AndroidUtils
 
-AndroidUtils 功能库
-作者： 千古八方
-地址： https://github.com/qiangubafang/AndroidUtils
-简述： 该功能库为android 7.1.2 智能终端常用功能的集合，同样适用于手机端。
-文档： https://rangotec.com/blog/177.html
+AndroidUtils 功能库 <br/>
+作者： 千古八方<br/>
+地址： https://github.com/qiangubafang/AndroidUtils<br/>
+简述： 该功能库为android 7.1.2 智能终端常用功能的集合，同样适用于手机端。<br/>
+文档： https://rangotec.com/blog/177.html<br/>
 
-Gitee部分内容看不到， 迁移回Github。
-本代码完全开源不受任何版权、权力约束！！！可用于任意用途！！！
+Gitee部分内容看不到， 迁移回Github。<br/>
+本代码完全开源不受任何版权、权力约束！！！可用于任意用途！！！<br/>
 
 ### 目录说明： 
 ```
