@@ -1,13 +1,19 @@
 cmake_minimum_required(VERSION 3.4.1)
-
+project("qgbfutils")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/build/jniLibs/${ANDROID_ABI})
 
-#设置头文件搜索路径（和此txt同个路径的头文件无需设置），可选
-#INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/common)
 
-#指定用到的系统库或者NDK库或者第三方库的搜索路径，可选。
-#LINK_DIRECTORIES(/usr/local/lib)
+set(UTILS_PATH src/main/jni-source-utils)
+add_library( ${CMAKE_PROJECT_NAME}
+        SHARED
+        ${UTILS_PATH}/serialport/RS485Serial.cpp
+        ${UTILS_PATH}/serialport/RS485SerialMulti.cpp
+        ${UTILS_PATH}/gpio/gpio.cpp
+        ${UTILS_PATH}/util/PipeUtil.cpp
+        )
 
-#添加子目录，将自动找到子目录中的CMakeLists.txt
-ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/src/main/jni-source-utils/serialport)
-ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/src/main/jni-source-utils/gpio)
+target_link_libraries( ${CMAKE_PROJECT_NAME}
+        ${log-lib}
+        log
+        android
+        )

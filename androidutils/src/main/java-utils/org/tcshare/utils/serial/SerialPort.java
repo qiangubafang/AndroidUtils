@@ -13,7 +13,7 @@ public class SerialPort {
     private static final String TAG = SerialPort.class.getSimpleName();
 
     static {
-        System.loadLibrary("tc_serialport_n");
+        System.loadLibrary("qgbfutils");
     }
 
     /**

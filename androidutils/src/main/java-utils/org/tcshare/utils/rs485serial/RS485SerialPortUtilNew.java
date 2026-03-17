@@ -27,7 +27,7 @@ public class RS485SerialPortUtilNew {
     private boolean DEBUG = false;
 
     static {
-        System.loadLibrary("tc_serialport_n");
+        System.loadLibrary("qgbfutils");
     }
 
     private RS485SerialPort rs485SerialPort  = new RS485SerialPort();
