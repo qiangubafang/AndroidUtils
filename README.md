@@ -1,6 +1,13 @@
 # AndroidUtils
 
-该功能库为android 7.1.2 智能终端常用功能的集合 <br/>
+AndroidUtils 功能库<br/>
+作者： 千古八方<br/>
+地址： https://github.com/qiangubafang/AndroidUtils<br/>
+简述： 该功能库为android 7.1.2 智能终端常用功能的集合，同样适用于手机端。<br/>
+文档： https://rangotec.com/blog/177.html<br/>
+<br/>
+Gitee部分内容看不到， 迁移回Github。<br/>
+本代码完全开源不受任何版权、权力约束！！！可用于任意用途！！！<br/>
 
 ### 目录说明： 
 ```
@@ -11,11 +18,28 @@
          /res-utils          工具功能资源路径
          /jni-source-utils   native 源码 <br/>
 ```            
-           
-### 工具功能
+
+### 工具功能列表
 #### websocket 功能
+WebSocketManager.java
 #### 蓝牙GATT通信，自动组装包。
 BTUtil.java
+```agsl
+        // 二次组装数据结构，可选。
+        PacketUtil packetUtil = new PacketUtil((byte) 0x68, (byte) 0x55, (byte) 0x16, 512);
+        btUtil = new BTUtil(null,
+                "0000fff1-0000-1000-8000-00805f9b34fb",
+                "0000fff2-0000-1000-8000-00805f9b34fb",
+                1000,
+                packetUtil);
+        btUtil.setDEBUG(true);
+        btUtil.setActivity(this);
+        
+        btUtil.searchBT(); // 搜索并连接蓝牙
+        btUtil.addObserver(cb); // 接收信息
+        btUtil.sendData(bytes); // 发送信息
+        
+```
 #### AES加密
 AESEncryptUtil.java
 #### 图片模糊工具
@@ -23,9 +47,25 @@ BlurBuilder.java
 #### 相机工具
 CameraUtils.java
 #### 校验和工具
-CRC16.java 
+复制自这里，https://github.com/galaxy-sea/crc<br/>
+测试了很多没发现问题，把测试过的代码本地留存一份。<br/>
+```agsl
+    public static void main(String[] args) {
+        for (CRCModel crcModel : CRCModel.values) {
+            String names = Arrays.toString(crcModel.names);
+            System.out.println(names + " checkSum: " + new BitwiseBigCRC(crcModel).hex(CRCModel.checkInput));
+            if (crcModel.width <= 64) {
+                System.out.println(names + " checkSum: " + new BitwiseCRC(crcModel).hex(CRCModel.checkInput));
+                System.out.println(names + " checkSum: " + new TableDrivenCRC(crcModel).hex(CRCModel.checkInput));
+            }
+        }
+    }
+```
 #### 16进制工具
-Hex.java HexDump.java
+Hex.java HexDump.java 摘自Android 源码和Apache工具源码
+#### 网络工具类，包含cookie（内存及硬盘的持久化） 底层OkHttp。
+经历几十个项目，项目里用啥就添加啥，常规方法基本齐全了。  
+HttpApi.java
 #### https 证书
 HttpsUtils.java
 #### 日志工具，http日志工具
@@ -49,14 +89,12 @@ HttpLogger.java
 PermissionHelper.java
 #### 打开系统设置功能
 SettingHelper.java
-#### 网络工具类，包含cookie（内存及硬盘的持久化）
-HttpApi.java 
-#### 沉浸式工具 
-ImmerseUtil.java
 #### 执行shell命令工具
 ShellUtils.java
 #### Wifi 工具, 搜索、打开、连接等
 WiFiUtil.java
+#### 全屏后Dialog show 会再次弹出底部的导航栏，需要隐藏；
+ActUtil.java
 #### 验证用的正则表达式
 Validator.java
 #### 生成随机数的工具类
@@ -72,8 +110,8 @@ CameraUtils.java
 #### 相机预览类
 CameraSufaceView.java
 #### 贝塞尔曲线相关
-DotsTextView.java // 贝塞尔曲线实现的等待点动画，
-BeizerEvaluator.java // 贝塞尔曲线计算工具 
+DotsTextView.java // 贝塞尔曲线实现的等待点动画，<br/>
+BeizerEvaluator.java // 贝塞尔曲线计算工具 <br/>
 #### 侧滑消失的行为，列表里的某个条目，侧滑删除
 MySwipeDismissBehavior.java
 #### 可展开列表数据适配器
@@ -82,15 +120,18 @@ ExpandableRecyclerViewAdapter.java
 WebViewFragment.java
 #### 捕获应用崩溃信息用 
 CrashHandler.java 
-#### dialog
-LoadingDialog.java
-MsgDialogUtil.java
+#### Dialog
+LoadingDialog.java  简单的画圈加载中
+MsgDialogUtil.java  简单的显示信息
 ### 自定义的widget挂件
 #### 仪表盘
 GangeView.java 
 #### 雷达图
 RadarView.java 
+#### 选择一张图片工具类
+SelectOnePicture.java
 #### 九宫格选择图片
+SelectPictureGridView.java
 ```
 安卓11 之后 manifest 根节点下需要添加：
     <queries>
@@ -98,23 +139,21 @@ RadarView.java
             <action android:name="android.media.action.IMAGE_CAPTURE" />
         </intent>
     </queries>
-```
-
-SelectPictureGridView.java 
-#### 选择一张图片工具类
-SelectOnePicture.java     
+```  
 #### 去掉色彩，布局变成灰色的工具
 StaturationView.java    
 #### 底部弹出选择列表
 BottomListDialog.java   
 #### 从左滑动到右侧退出的布局
 DragLeft2RightExitFrameLayout.java 
-#### 圆形头像； Glide 也可以实现
+#### 圆形头像； Glide 也可以实现；
 CircleImageView.java  
 #### 左上角斜着的标签样式
 LabelView.java  
-
-
+### server.zip 
+应用内提供php服务的工具
+### pdfjs    
+pdf 预览工具
 
 ### 串口|RS485
 1. 全双工，串口通信 SerialPort.java， 使用jni打开设备节点，返回文件描述符，进而获取输入输出流。
@@ -150,6 +189,7 @@ LabelView.java
     
 ### 控制状态栏、导航栏的显示隐藏
 该功能需要修改android代码, 具体方式见 /framework-modify/动态控制显示隐藏导航栏和状态栏/<br/>
+部分厂商提供了此方法，没提供的我们自己添加。
 ```
     // 隐藏导航栏及状态栏
     sendBroadcast(new Intent("android.intent.action.HIDE_NAVIGATION_BAR"));
@@ -179,5 +219,3 @@ LabelView.java
         }
     });
 ```
-### server.zip 应用内提供php服务的工具
-### pdfjs    pdf 预览工具
