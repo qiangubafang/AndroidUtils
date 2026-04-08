@@ -14,7 +14,7 @@ import com.google.gson.Gson;
 
 import org.tcshare.broadcast.BootBroadcastReceiver;
 import org.tcshare.permission.PermissionHelper;
-import org.tcshare.utils.PackageUtil;
+import org.tcshare.utils.AppUtil;
 import org.tcshare.utils.PhoneInfo;
 import org.tcshare.utils.ShellUtils;
 import org.tcshare.utils.UnZipUtil;
@@ -120,9 +120,9 @@ public class App extends Application {
 
                         @Override
                         public void onResult(int requestCode, String[] permissions, int[] grantResult) {
-                            ShellUtils.CommandResult ret = PackageUtil.updateSilent(Environment.getExternalStorageDirectory() + "/test.apk");
+                            ShellUtils.CommandResult ret = AppUtil.updateSilent(Environment.getExternalStorageDirectory() + "/test.apk");
                             Log.e("TAG", "test slient install apk :" + new Gson().toJson(ret));
-                            PackageUtil.startAPP(ctx);
+                            AppUtil.startAPP(ctx);
                         }
                     });
 

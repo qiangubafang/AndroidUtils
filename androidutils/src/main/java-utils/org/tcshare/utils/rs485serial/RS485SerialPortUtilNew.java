@@ -4,7 +4,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import org.tcshare.utils.HexDump;
+import org.tcshare.utils.hex.HexDump;
 import org.tcshare.utils.ShellUtils;
 
 import java.util.Objects;

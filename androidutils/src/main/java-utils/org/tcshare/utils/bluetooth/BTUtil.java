@@ -18,11 +18,9 @@ import android.widget.Toast;
 
 import org.tcshare.dialog.LoadingDialog;
 import org.tcshare.dialog.MsgDialogUtil;
-import org.tcshare.utils.HexDump;
-import org.tcshare.utils.packet.PacketUtil;
+import org.tcshare.utils.hex.HexDump;
 
 import java.nio.ByteBuffer;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.UUID;

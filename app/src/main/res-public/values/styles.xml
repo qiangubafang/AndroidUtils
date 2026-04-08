@@ -1,7 +1,7 @@
 <resources>
 
     <!-- App 自定义的主题样式. -->
-    <style name="MyAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="MyAppTheme" parent="Theme.Material3.DayNight">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -42,7 +42,7 @@
 
     <style name="MyAppTheme.NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="MyAppTheme.AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+    <style name="MyAppTheme.AppCompatDialogStyle" parent="Theme.Material3.DayNight.Dialog">
         <item name="windowNoTitle">false</item>
     </style>
 </resources>

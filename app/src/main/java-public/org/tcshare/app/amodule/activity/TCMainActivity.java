@@ -1,15 +1,10 @@
 package org.tcshare.app.amodule.activity;
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.Settings;
 import android.util.Log;
 import android.util.Pair;
 import android.view.View;
@@ -41,7 +36,7 @@ import org.tcshare.network.ResponseString;
 import org.tcshare.network.cookie.CookieJarImpl;
 import org.tcshare.network.cookie.PersistentCookieStore;
 import org.tcshare.permission.PermissionHelper;
-import org.tcshare.utils.HexDump;
+import org.tcshare.utils.hex.HexDump;
 import org.tcshare.utils.Notify;
 import org.tcshare.utils.ToastUtil;
 import org.tcshare.utils.UpdateUtil;
@@ -54,8 +49,6 @@ import org.tcshare.utils.ntp.UpdateSystemTimeUtil;
 import org.tcshare.utils.packet.PacketUtil;
 import org.tcshare.utils.rs485serial.RS485SerialPortUtilNew;
 import org.tcshare.utils.rs485serial.RS485SerialPortUtilNewReceiveOnly;
-import org.tcshare.utils.websocket.IReceiveMessage;
-import org.tcshare.utils.websocket.WebSocketManager;
 import org.tcshare.widgets.BottomListDialog;
 
 import java.nio.charset.StandardCharsets;

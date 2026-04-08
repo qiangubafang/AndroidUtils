@@ -1,7 +1,6 @@
 package org.tcshare.fileselectorlib;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -14,18 +13,12 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import android.provider.Settings;
-import android.util.Log;
 import android.widget.Toast;
-
-import com.google.gson.Gson;
 
 import org.tcshare.activity.TCFileSelectorActivity;
 import org.tcshare.fileselectorlib.Objects.BasicParams;
 import org.tcshare.fileselectorlib.Objects.FileInfo;
-import org.tcshare.fileselectorlib.Utils.PermissionUtil;
 import org.tcshare.permission.PermissionHelper;
-import org.tcshare.utils.PackageUtil;
-import org.tcshare.utils.ShellUtils;
 import org.tcshare.utils.ToastUtil;
 
 import java.util.ArrayList;

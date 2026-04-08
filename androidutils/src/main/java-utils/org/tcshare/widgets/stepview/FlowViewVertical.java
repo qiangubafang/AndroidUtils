@@ -12,10 +12,10 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import org.tcshare.androidutils.R;
+import org.tcshare.utils.ActUtil;
 
 import java.util.HashMap;
 import java.util.Map;
-import org.tcshare.utils.DensityUtil;
 
 /**
  * Created by paike on 2017/2/10.
@@ -105,7 +105,7 @@ public class FlowViewVertical extends View {
         if (widthMode == MeasureSpec.EXACTLY) {
             bgWidth = MeasureSpec.getSize(widthMeasureSpec) - getPaddingLeft() - getPaddingRight();
         } else
-            bgWidth = DensityUtil.dp2px(getContext(), 311);
+            bgWidth = ActUtil.dp2px(getContext(), 311);
         starY = getPaddingTop() + bgRadius;
         stopY = getPaddingTop() + bgRadius + (maxStep - 1) * interval;
         float bottom = stopY + bgRadius + getPaddingBottom();

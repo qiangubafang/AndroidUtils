@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.Transparent" parent="android:Theme">
+    <style name="Theme.Transparent" parent="Theme.Material3.DayNight">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowContentOverlay">@null</item>
@@ -13,7 +13,7 @@
 
     </style>
     <!-- 底部dialog背景透明 -->
-    <style name="BottomListSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+    <style name="BottomListSheetDialogTheme" parent="Theme.Material3.DayNight.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/BottomListSheetStyle</item>
     </style>
 
@@ -21,5 +21,12 @@
         <item name="android:background">@android:color/transparent</item>
     </style>
 
+    <declare-styleable name="BatteryView">
+        <attr name="bv_borderColor" format="color"/>
+        <attr name="bv_infillColor" format="color"/>
+        <attr name="bv_percent" format="integer"/>
+        <attr name="bv_charging" format="boolean"/>
+        <attr name="bv_internalSpacing" format="float"/>
+    </declare-styleable>
 
 </resources>

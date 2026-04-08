@@ -19,6 +19,7 @@ package org.tcshare.utils.crc;
 import java.math.BigInteger;
 
 /**
+ * 原作者：
  * @author ChangJin Wei (魏昌进)
  */
 public final class CRCUtils {

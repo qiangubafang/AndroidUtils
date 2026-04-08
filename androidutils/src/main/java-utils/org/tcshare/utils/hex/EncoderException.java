@@ -15,14 +15,15 @@
  * limitations under the License.
  */
 
-package org.tcshare.utils;
+package org.tcshare.utils.hex;
 
 /**
- * Thrown when there is a failure condition during the decoding process. This exception is thrown when a {@link Decoder}
- * encounters a decoding specific exception such as invalid data, or characters outside of the expected range.
+ * Thrown when there is a failure condition during the encoding process. This exception is thrown when an
+ * {@link Encoder} encounters a encoding specific exception such as invalid data, inability to calculate a checksum,
+ * characters outside of the expected range.
  *
  */
-public class DecoderException extends Exception {
+public class EncoderException extends Exception {
 
     /**
      * Declares the Serial Version Uid.
@@ -37,7 +38,7 @@ public class DecoderException extends Exception {
      *
      * @since 1.4
      */
-    public DecoderException() {
+    public EncoderException() {
         super();
     }
 
@@ -46,17 +47,19 @@ public class DecoderException extends Exception {
      * be initialized by a call to {@link #initCause}.
      *
      * @param message
-     *            The detail message which is saved for later retrieval by the {@link #getMessage()} method.
+     *            a useful message relating to the encoder specific error.
      */
-    public DecoderException(final String message) {
+    public EncoderException(final String message) {
         super(message);
     }
 
     /**
      * Constructs a new exception with the specified detail message and cause.
+     *
      * <p>
      * Note that the detail message associated with {@code cause} is not automatically incorporated into this
      * exception's detail message.
+     * </p>
      *
      * @param message
      *            The detail message which is saved for later retrieval by the {@link #getMessage()} method.
@@ -65,7 +68,7 @@ public class DecoderException extends Exception {
      *            value is permitted, and indicates that the cause is nonexistent or unknown.
      * @since 1.4
      */
-    public DecoderException(final String message, final Throwable cause) {
+    public EncoderException(final String message, final Throwable cause) {
         super(message, cause);
     }
 
@@ -79,7 +82,7 @@ public class DecoderException extends Exception {
      *            value is permitted, and indicates that the cause is nonexistent or unknown.
      * @since 1.4
      */
-    public DecoderException(final Throwable cause) {
+    public EncoderException(final Throwable cause) {
         super(cause);
     }
 }

@@ -22,7 +22,7 @@ import android.widget.RelativeLayout;
 import androidx.core.content.res.ResourcesCompat;
 
 import org.tcshare.androidutils.R;
-import org.tcshare.utils.DensityUtil;
+import org.tcshare.utils.ActUtil;
 import org.tcshare.utils.RandomUtils;
 
 import java.util.ArrayList;
@@ -184,8 +184,8 @@ public class FavorLayout extends RelativeLayout {
     }
 
     public void setFavorWidthHeight(int width, int height) {
-        this.favorWidth = DensityUtil.dp2px(getContext(), width);
-        this.favorHeight = DensityUtil.dp2px(getContext(), height);
+        this.favorWidth = ActUtil.dp2px(getContext(), width);
+        this.favorHeight = ActUtil.dp2px(getContext(), height);
     }
 
     private PointF getPointLow() {
@@ -267,7 +267,7 @@ public class FavorLayout extends RelativeLayout {
     public void setFavors(List<Drawable> items) {
         loves.clear();
         loves.addAll(items);
-        if (items.size() == 0) {
+        if (items.isEmpty()) {
             throw new UnsupportedOperationException("点赞效果图片不能为空");
         }
 

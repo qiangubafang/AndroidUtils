@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.tcshare.utils;
+package org.tcshare.utils.hex;
 
 import java.security.InvalidParameterException;
 

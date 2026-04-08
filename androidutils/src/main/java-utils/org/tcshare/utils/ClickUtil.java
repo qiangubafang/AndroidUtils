@@ -2,6 +2,9 @@ package org.tcshare.utils;
 
 import android.os.SystemClock;
 
+/**
+ * 连续点击X次按钮打开
+ */
 public class ClickUtil {
     private final int count;
     private final int millis;

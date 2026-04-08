@@ -14,9 +14,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.tcshare.app.R;
-import org.tcshare.utils.DecoderException;
-import org.tcshare.utils.Hex;
-import org.tcshare.utils.HexDump;
+import org.tcshare.utils.hex.DecoderException;
+import org.tcshare.utils.hex.Hex;
+import org.tcshare.utils.hex.HexDump;
 import org.tcshare.utils.serial.SerialPort;
 
 import java.io.IOException;

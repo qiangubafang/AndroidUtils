@@ -69,7 +69,7 @@ public class ToastUtil {
             TextView message = ((TextView) view.findViewById(android.R.id.message));
             message.setTextColor(Color.WHITE);
             message.setGravity(Gravity.CENTER);
-            message.setPadding(DensityUtil.dp2px(context, 10), DensityUtil.dp2px(context, 6), DensityUtil.dp2px(context, 10), DensityUtil.dp2px(context, 6));
+            message.setPadding(ActUtil.dp2px(context, 10), ActUtil.dp2px(context, 6), ActUtil.dp2px(context, 10), ActUtil.dp2px(context, 6));
             toast.setGravity(Gravity.CENTER, 0, 0);
         } else {
             //TODO 自定义一个toast android 11, api31 后不允许自定义toast
@@ -99,7 +99,7 @@ public class ToastUtil {
             layoutParams.height = h;
             message.setLayoutParams(layoutParams);
             message.setGravity(Gravity.CENTER);
-            message.setPadding(DensityUtil.dp2px(context, 10), DensityUtil.dp2px(context, 6), DensityUtil.dp2px(context, 10), DensityUtil.dp2px(context, 6));
+            message.setPadding(ActUtil.dp2px(context, 10), ActUtil.dp2px(context, 6), ActUtil.dp2px(context, 10), ActUtil.dp2px(context, 6));
             toast.setGravity(Gravity.CENTER, 0, 0);
         } else {
             //TODO 自定义一个toast android 11, api31 后不允许自定义toast

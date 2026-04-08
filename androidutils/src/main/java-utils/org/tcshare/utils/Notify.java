@@ -14,6 +14,7 @@ import androidx.core.app.NotificationCompat;
 
 /**
  * Created by FallRain on 2017/8/22.
+ * 显示通知
  */
 
 public class Notify {

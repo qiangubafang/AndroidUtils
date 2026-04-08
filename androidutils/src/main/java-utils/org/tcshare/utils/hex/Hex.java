@@ -1,6 +1,5 @@
-package org.tcshare.utils;
+package org.tcshare.utils.hex;
 
-import java.io.ByteArrayOutputStream;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;

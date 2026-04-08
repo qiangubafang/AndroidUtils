@@ -9,7 +9,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import org.tcshare.androidutils.R;
-import org.tcshare.utils.DensityUtil;
+import org.tcshare.utils.ActUtil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -97,13 +97,13 @@ public class FlowViewHorizontal extends View {
         if (widthMode == MeasureSpec.EXACTLY) {
             bgWidth = MeasureSpec.getSize(widthMeasureSpec) - getPaddingLeft() - getPaddingRight();
         } else
-            bgWidth = DensityUtil.dp2px(getContext(), 311);
+            bgWidth = ActUtil.dp2px(getContext(), 311);
 
         int bgHeight;
         if (heightMode == MeasureSpec.EXACTLY) {
             bgHeight = MeasureSpec.getSize(heightMeasureSpec) - getPaddingTop() - getPaddingBottom();
         } else
-            bgHeight = DensityUtil.dp2px(getContext(), 49);
+            bgHeight = ActUtil.dp2px(getContext(), 49);
         float left = getPaddingLeft() + bgRadius;
         stopX = bgWidth - bgRadius;
         startX = left;

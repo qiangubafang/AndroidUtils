@@ -1,5 +1,6 @@
 package org.tcshare.utils.bluetooth;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.bluetooth.BluetoothAdapter;
@@ -21,10 +22,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.tcshare.adapter.DevAdapter;
 import org.tcshare.androidutils.R;
 import org.tcshare.dialog.MsgDialogUtil;
-import org.tcshare.utils.DensityUtil;
-import org.tcshare.utils.ToastUtil;
+import org.tcshare.utils.ActUtil;
 import org.tcshare.widgets.ItemDecorations;
 
+/**
+ * 使用前，请先获取权限
+ */
+@SuppressLint("MissingPermission")
 public class BTSearchDialog extends Dialog {
     private static final String TAG = BTSearchDialog.class.getSimpleName();
     private final OnDevSelectListener listener;
@@ -39,7 +43,11 @@ public class BTSearchDialog extends Dialog {
             String action = intent.getAction();
             if (BluetoothDevice.ACTION_FOUND.equals(action)) {
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                Log.e(TAG, "发现设备:" + device.getName() + ":" + device.getAddress() + ":" + (device.getBondState() == BluetoothDevice.BOND_NONE ? "未配对" : "其他"));
+                if(device != null) {
+                    Log.d(TAG, "发现设备:" + device.getName() + ":" + device.getAddress() + ":" + (device.getBondState() == BluetoothDevice.BOND_NONE ? "未配对" : "其他"));
+                }else {
+                    Log.d(TAG, "设备 null！");
+                }
                 adapter.addItem(device);
             }
         }
@@ -53,6 +61,7 @@ public class BTSearchDialog extends Dialog {
     }
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +70,7 @@ public class BTSearchDialog extends Dialog {
 
         RecyclerView mRecyclerView = findViewById(R.id.rvDevList);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(ctx));
-        mRecyclerView.addItemDecoration(ItemDecorations.vertical(ctx).typeColor(0, Color.parseColor("#efefef"), DensityUtil.dp2px(ctx, 1)).create());
+        mRecyclerView.addItemDecoration(ItemDecorations.vertical(ctx).typeColor(0, Color.parseColor("#efefef"), ActUtil.dp2px(ctx, 1)).create());
         mRecyclerView.setAdapter(adapter);
         adapter.setOnItemClickLitener((view, item) -> listener.onConnect(item));
 
@@ -91,6 +100,7 @@ public class BTSearchDialog extends Dialog {
         adapter.clear();
         super.show();
     }
+
 
     private void startSearchDialog() {
         adapter.clear();

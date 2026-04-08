@@ -3,20 +3,14 @@ package org.tcshare.utils;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.util.Log;
 
 import org.tcshare.androidutils.R;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
 
 /**
  * Created by FallRain on 2017/7/3.
  */
 
-public class PackageUtil {
+public class AppUtil {
     public static boolean isAppInstalled(Context context, String appPackageName) {
         PackageManager pm = context.getPackageManager();
         boolean installed = false;
