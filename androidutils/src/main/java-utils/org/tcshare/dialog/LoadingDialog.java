@@ -56,14 +56,11 @@ public class LoadingDialog extends Dialog {
 
         setCancelable(false);
         setCanceledOnTouchOutside(false);
-        setContentView(layout, new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT));
+        img.startAnimation(animation);
     }
 
     @Override
     public void show() {
-        img.startAnimation(animation);
         if (immerse){
             Window window = getWindow();
             ActUtil.setNotFocusable(window);
@@ -73,6 +70,7 @@ public class LoadingDialog extends Dialog {
         }else {
             super.show();
         }
+
     }
 
     @Override
