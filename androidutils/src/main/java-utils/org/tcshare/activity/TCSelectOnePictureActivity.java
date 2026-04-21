@@ -75,14 +75,7 @@ public class TCSelectOnePictureActivity extends Activity {
         cacheDir.mkdirs();
         imageFile = new File(cacheDir, String.format("%d.jpg", System.currentTimeMillis()));
 
-        Uri imageUri;
-        if ((Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)) {
-            imageUri = FileProvider.getUriForFile(this, getPackageName() + ".provider", imageFile);
-        } else {
-            imageUri = Uri.fromFile(imageFile);
-        }
-
-        return imageUri;
+        return FileProvider.getUriForFile(this, getPackageName() + ".provider", imageFile);
 
     }
 

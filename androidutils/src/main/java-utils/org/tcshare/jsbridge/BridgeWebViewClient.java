@@ -42,23 +42,19 @@ public class BridgeWebViewClient extends WebViewClient {
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            String url = request.getUrl().toString();
-            try {
-                url = URLDecoder.decode(url, "UTF-8");
-            } catch (UnsupportedEncodingException ex) {
-                ex.printStackTrace();
-            }
-            if (url.startsWith(BridgeUtil.YY_RETURN_DATA)) { // 如果是返回数据
-                webView.handlerReturnData(url);
-                return true;
-            } else if (url.startsWith(BridgeUtil.YY_OVERRIDE_SCHEMA)) { //
-                webView.flushMessageQueue();
-                return true;
-            } else {
-                return super.shouldOverrideUrlLoading(view, request);
-            }
-        }else {
+        String url = request.getUrl().toString();
+        try {
+            url = URLDecoder.decode(url, "UTF-8");
+        } catch (UnsupportedEncodingException ex) {
+            ex.printStackTrace();
+        }
+        if (url.startsWith(BridgeUtil.YY_RETURN_DATA)) { // 如果是返回数据
+            webView.handlerReturnData(url);
+            return true;
+        } else if (url.startsWith(BridgeUtil.YY_OVERRIDE_SCHEMA)) { //
+            webView.flushMessageQueue();
+            return true;
+        } else {
             return super.shouldOverrideUrlLoading(view, request);
         }
     }
