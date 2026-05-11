@@ -52,8 +52,11 @@ public class TCSerialPortActivity extends Activity {
         public void onReceived(final byte[] buffer, final int size) {
             runOnUiThread(new Runnable() {
                 public void run() {
-                    ByteBuffer dataByte = ByteBuffer.wrap(buffer, 0, size);
-                    String data = hexCheckBox.isChecked() ? data =Hex.encodeHexString(dataByte) : new String(dataByte.array());
+                    byte[] result = new byte[size];
+                    System.arraycopy(buffer, 0, result, 0, size);
+
+                    String data = hexCheckBox.isChecked() ? data =Hex.encodeHexString(result) : new String(result);
+
                     mReception.append(data + "\n");
                     receiveCount += size;
                     recCountTV.setText(String.valueOf(receiveCount));
