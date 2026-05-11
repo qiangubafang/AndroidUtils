@@ -125,11 +125,12 @@ public class SerialCommunication {
                     if (mInputStream == null) return;
                     size = mInputStream.read(buffer);
                     if (size > 0) {
-                        ByteBuffer bb = ByteBuffer.wrap(buffer, 0, size);
+                        byte[] result = new byte[size];
+                        System.arraycopy(buffer, 0, result, 0, size);
                         if(psu != null) {
-                            psu.preparePacket(bb.array(), cb);
+                            psu.preparePacket(result, cb);
                         }else{
-                            cb.onPacketReady(bb.array());
+                            cb.onPacketReady(result);
                         }
                     }
                 } catch (Exception e) {
