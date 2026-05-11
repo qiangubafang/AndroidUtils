@@ -16,6 +16,8 @@
         android:inputType="none"
         android:gravity="top"
         android:hint="接受到的数据..."
+        android:scrollbars="vertical"
+        android:textIsSelectable="true"
         android:textColorHint="#000000"
         android:isScrollContainer="true"
         android:scrollbarStyle="insideOverlay"
@@ -49,6 +51,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="16进制"
+                android:checked="true"
                 android:textColor="#000000" />
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -121,7 +124,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="S:"
+                android:text="发送字节:"
                 android:gravity="center_vertical"
                 android:textColor="#000000" />
 
@@ -137,7 +140,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="R:"
+                android:text="接收字节:"
                 android:textColor="#000000" />
 
             <TextView

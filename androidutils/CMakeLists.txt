@@ -8,6 +8,7 @@ add_library( ${CMAKE_PROJECT_NAME}
         SHARED
         ${UTILS_PATH}/serialport/RS485Serial.cpp
         ${UTILS_PATH}/serialport/RS485SerialMulti.cpp
+        ${UTILS_PATH}/serialport/serialport.cpp
         ${UTILS_PATH}/gpio/gpio.cpp
         ${UTILS_PATH}/util/PipeUtil.cpp
         )

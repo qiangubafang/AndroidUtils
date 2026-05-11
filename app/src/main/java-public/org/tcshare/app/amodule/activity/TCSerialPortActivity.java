@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -22,6 +23,7 @@ import org.tcshare.utils.serial.SerialPort;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.ByteBuffer;
 import java.security.InvalidParameterException;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -50,10 +52,13 @@ public class TCSerialPortActivity extends Activity {
         public void onReceived(final byte[] buffer, final int size) {
             runOnUiThread(new Runnable() {
                 public void run() {
-                    String data = hexCheckBox.isChecked() ? data =HexDump.dumpHexString(buffer) : new String(buffer, 0, size);
-                    mReception.append(data);
+                    ByteBuffer dataByte = ByteBuffer.wrap(buffer, 0, size);
+                    String data = hexCheckBox.isChecked() ? data =Hex.encodeHexString(dataByte) : new String(dataByte.array());
+                    mReception.append(data + "\n");
                     receiveCount += size;
                     recCountTV.setText(String.valueOf(receiveCount));
+
+                    scrollToBottom(mReception);
                 }
             });
         }
@@ -136,7 +141,21 @@ public class TCSerialPortActivity extends Activity {
         });
         b.show();
     }
-
+    // 让 TextView 自动滚动到底部（真正可用）
+    private void scrollToBottom(TextView textView) {
+        textView.post(new Runnable() {
+            @Override
+            public void run() {
+                // 核心：计算文本总高度，滚动到最底部
+                int scrollAmount = textView.getLayout().getLineTop(textView.getLineCount()) - textView.getHeight();
+                if (scrollAmount > 0) {
+                    textView.scrollTo(0, scrollAmount);
+                } else {
+                    textView.scrollTo(0, 0);
+                }
+            }
+        });
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -146,11 +165,12 @@ public class TCSerialPortActivity extends Activity {
         sendCountTV = (TextView) findViewById(R.id.send_num);
         recCountTV = (TextView) findViewById(R.id.rec_num);
 
+        mReception.setMovementMethod(new ScrollingMovementMethod());
+
         mSendTimeInterval = 1000;
         mTimeInterval = (EditText) findViewById(R.id.timeinterval);
 
         hexCheckBox = (CheckBox) findViewById(R.id.cb_hex);
-        hexCheckBox.setChecked(false);
 
         repeatCheckBox = (CheckBox) findViewById(R.id.repeat_check);
         repeatCheckBox.setChecked(false);
