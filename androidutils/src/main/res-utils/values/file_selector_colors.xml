@@ -9,6 +9,7 @@
     <color name="no_color">#00000000</color>
     <color name="gray">#A9A9A9</color>
     <color name="light_gray">#D3D3D3</color>
+    <color name="transDarkGray">#99000000</color>
     <color name="red">#DC143C</color>
     <color name="theme_color">#1E90FF</color>
     <color name="text_color_light">#FFFFFF</color>

@@ -102,10 +102,31 @@ public class ToastUtil {
             message.setPadding(ActUtil.dp2px(context, 10), ActUtil.dp2px(context, 6), ActUtil.dp2px(context, 10), ActUtil.dp2px(context, 6));
             toast.setGravity(Gravity.CENTER, 0, 0);
         } else {
-            //TODO 自定义一个toast android 11, api31 后不允许自定义toast
+            //TODO 自定义一个toast
         }
         toast.show();
     }
 
+    protected static Toast mToast = null;
+
+    /**
+     * 如果上一个没显示完，立即显示下一个
+     *
+     * @param ctx
+     * @param message
+     */
+    public static void showMessage(Context ctx, String message) {
+        if (mToast == null) {
+            mToast = Toast.makeText(ctx, message, Toast.LENGTH_SHORT);
+        } else {
+            View view = mToast.getView();
+            mToast.cancel();
+            mToast = new Toast(ctx);
+            mToast.setView(view);
+            mToast.setDuration(Toast.LENGTH_SHORT);
+            mToast.setText(message);
+        }
+        mToast.show();
+    }
 
 }
