@@ -114,7 +114,6 @@ public class RS485SerialPortUtilNew {
             }
             if (rs485SerialPort != null) {
                 rs485SerialPort.close();
-                rs485SerialPort = null;
             }
             rsBlockingQueue.clear();
         } catch (Exception e) {
