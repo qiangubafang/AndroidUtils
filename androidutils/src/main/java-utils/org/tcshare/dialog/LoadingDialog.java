@@ -56,7 +56,7 @@ public class LoadingDialog extends Dialog {
 
         setCancelable(false);
         setCanceledOnTouchOutside(false);
-        img.startAnimation(animation);
+
     }
 
     @Override
@@ -70,7 +70,7 @@ public class LoadingDialog extends Dialog {
         }else {
             super.show();
         }
-
+        img.startAnimation(animation);
     }
 
     @Override
