@@ -105,13 +105,18 @@ public class TCMainActivity extends AppCompatActivity {
             }
         });
 
-        new Thread() {
+        // 需要设置时间权限（系统保护权限）
+       new Thread() {
             @Override
             public void run() {
                 super.run();
-                Log.e("TAG", System.currentTimeMillis() + "");
-                Pair<Boolean, Long> ret = UpdateSystemTimeUtil.updateSystem("cn.ntp.org.cn");
-                Log.e("TAG", ret + "");
+                try {
+                    Log.e("TAG", System.currentTimeMillis() + "");
+//                    Pair<Boolean, Long> ret = UpdateSystemTimeUtil.updateSystem("cn.ntp.org.cn");
+//                    Log.e("TAG", ret + "");
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
             }
         }.start();
 
@@ -286,6 +291,9 @@ public class TCMainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, TCSerialPortActivity.class);
             intent.putExtra("port", port);
             intent.putExtra("band", band);
+            startActivity(intent);
+        }else if (id == R.id.btnUSBSerialPort) {
+            Intent intent = new Intent(this, TCUSBSerialPortActivity.class);
             startActivity(intent);
         }
     }

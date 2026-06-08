@@ -197,6 +197,13 @@
                     android:onClick="onItemClick"
                     android:text="jsBridge"
                     android:textAppearance="@style/TextAppearance.AppCompat" />
+                <Button
+                    android:id="@+id/btnUSBSerialPort"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="onItemClick"
+                    android:text="打开USB串口"
+                    android:textAppearance="@style/TextAppearance.AppCompat" />
 
                 <EditText
                     android:id="@+id/serialPortText"
@@ -217,6 +224,7 @@
                     android:onClick="onItemClick"
                     android:text="打开串口"
                     android:textAppearance="@style/TextAppearance.AppCompat" />
+
 
             </LinearLayout>
 
