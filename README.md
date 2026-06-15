@@ -133,8 +133,7 @@ GangeView.java
 RadarView.java 
 #### 选择一张图片工具类
 SelectOnePicture.java
-#### 九宫格选择图片
-SelectPictureGridView.java
+
 #### Android POI-tl word模板引擎
 适配Android版的Apache POI、Word模板引擎。
 POI版本：5.2.5-4, 对应安卓最小SDK26 Android 8.0
@@ -142,6 +141,8 @@ POI版本：5.2.5-4, 对应安卓最小SDK26 Android 8.0
 poi 转安卓： https://github.com/centic9/poi-on-android
 模板引擎： https://deepoove.com/poi-tl/
 
+#### 九宫格选择图片
+SelectPictureGridView.java
 ```
 安卓11 之后 manifest 根节点下需要添加：
     <queries>
