@@ -126,6 +126,21 @@
                     android:textAppearance="@style/TextAppearance.AppCompat" />
 
                 <Button
+                    android:id="@+id/slientInstallAPP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="onItemClick"
+                    android:text="下载/安装APP"
+                    android:textAppearance="@style/TextAppearance.AppCompat" />
+        <Button
+                    android:id="@+id/exportWord"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="onItemClick"
+                    android:text="Word模板引擎POI"
+                    android:textAppearance="@style/TextAppearance.AppCompat" />
+
+                <Button
                     android:id="@+id/dragExit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

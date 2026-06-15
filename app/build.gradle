@@ -5,7 +5,7 @@ android {
 
     defaultConfig {
         applicationId "org.tcshare.app"
-        minSdkVersion 24
+        minSdkVersion 26
         targetSdkVersion 34
         versionCode 1
         versionName "1.0"
@@ -47,7 +47,7 @@ android {
             java.srcDirs = ['src/main/java-public',  'src/main/java-zxing']
             res.srcDirs = [ 'src/main/res-public', 'src/main/res-zxing']
             jniLibs.srcDirs = ['src/main/jni-libs-public']
-            assets.srcDirs = [ 'src/main/assets-public']
+            assets.srcDirs = ['src/main/assets-public', 'src/main/assets-poi',  'src/main/assets-utils']
         }
     }
 
@@ -86,6 +86,10 @@ dependencies {
 
     // 崩溃捕获
     implementation 'com.iqiyi.xcrash:xcrash-android-lib:3.0.0'
+
+
+    compileOnly 'org.projectlombok:lombok:1.18.34'
+    annotationProcessor 'org.projectlombok:lombok:1.18.34'
 
     // Modbus 协议， 使用jar包， 这个引用换库了， 下载不下来
     //implementation 'com.infiniteautomation:modbus4j:3.0.3'

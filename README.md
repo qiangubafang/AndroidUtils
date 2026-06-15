@@ -3,7 +3,7 @@
 AndroidUtils 功能库<br/>
 作者： 千古八方<br/>
 地址： https://github.com/qiangubafang/AndroidUtils<br/>
-简述： 该功能库为android 7.1.2 智能终端常用功能的集合，同样适用于手机端。<br/>
+简述： 该功能库为android 8.0 智能终端常用功能的集合，同样适用于手机端。<br/>
 文档： https://rangotec.com/blog/177.html<br/>
 <br/>
 Gitee部分内容看不到， 迁移回Github。<br/>
@@ -11,6 +11,9 @@ Gitee部分内容看不到， 迁移回Github。<br/>
 
 ### 目录说明： 
 ```
+lib库：androidutils 模块
+
+调用示例：
  src/main/java-public        应用程序代码 <br/>
          /res-public         应用程序资源路径 <br/>
          /jni-libs-public    应用程序引用的native libs 路径 <br/>        
@@ -132,6 +135,13 @@ RadarView.java
 SelectOnePicture.java
 #### 九宫格选择图片
 SelectPictureGridView.java
+#### Android POI-tl word模板引擎
+适配Android版的Apache POI、Word模板引擎。
+POI版本：5.2.5-4, 对应安卓最小SDK26 Android 8.0
+
+poi 转安卓： https://github.com/centic9/poi-on-android
+模板引擎： https://deepoove.com/poi-tl/
+
 ```
 安卓11 之后 manifest 根节点下需要添加：
     <queries>

@@ -13,7 +13,7 @@ android {
     compileSdk 34
 
     defaultConfig {
-        minSdkVersion 24
+        minSdkVersion 26
         targetSdkVersion 34
 
         consumerProguardFiles "consumer-rules.pro"
@@ -63,11 +63,19 @@ dependencies {
     implementation 'com.orhanobut:logger:2.2.0'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     implementation 'androidx.documentfile:documentfile:1.1.0'
+
+
+    // 配合代码里的POI模板，可以很轻松的替换word内容
+    // android 上可以使用的apache poi
+    // poishadow-all-5.2.5-4.jar
+    // https://github.com/centic9/poi-on-android
+    // 默认不打包进去，哪个项目用到再添加
+    compileOnly  fileTree(include: ['*.jar'], dir: 'libs')
 }
 
 ext {
     PUBLISH_GROUP_ID = "com.rangotec.utils"        //项目包名
     PUBLISH_ARTIFACT_ID = 'AndroidUtils'            //项目名
-    PUBLISH_VERSION = "4.0.9"                    //版本号
+    PUBLISH_VERSION = "4.1.10"                    //版本号
 }
 apply from: "${rootProject.projectDir}/publish-mavencentral.gradle"

@@ -63,6 +63,7 @@ import okhttp3.Call;
 import okhttp3.CookieJar;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
+import word_demo.DebugTestWordTemplate;
 
 
 public class TCMainActivity extends AppCompatActivity {
@@ -174,6 +175,7 @@ public class TCMainActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     super.run();
+                    // 阻塞调用
                     String ret = HttpApi.postSyncJSON("https://www.baidu.com", "", String.class);
                     Log.e("TAG", "ret:" + ret);
                 }
@@ -181,7 +183,6 @@ public class TCMainActivity extends AppCompatActivity {
 
 
         } else if (id == R.id.selectFile) {
-
             // 内含权限请求
             FileSelectorSettings settings = new FileSelectorSettings();
             settings.setRootPath(FileSelectorSettings.getSystemRootPath())//起始路径
@@ -249,6 +250,14 @@ public class TCMainActivity extends AppCompatActivity {
             }
         } else if (id == R.id.bottomDialog) {//底部对话框
             showBottomListDialog();
+        } else if (id == R.id.slientInstallAPP) {//静默安装APP
+            new UpdateUtil(view.getContext(),
+                    "http://106.12.167.128:8391/storage/appversion/1/es-mobile-v1.0.apk",
+                    "es-mobile-v1.0.apk", "aaaa111", "bbbbb222")
+                    .update();
+        } else if (id == R.id.exportWord) {
+            ToastUtil.showMessage(TCMainActivity.this, "开始替换word内容");
+            DebugTestWordTemplate.test(TCMainActivity.this);
         } else if (id == R.id.dragExit) {
             startActivity(new Intent(TCMainActivity.this, TCDrag2RightExitActivity.class));
         } else if (id == R.id.fragmentContainer) {
@@ -344,14 +353,10 @@ public class TCMainActivity extends AppCompatActivity {
     private void showBottomListDialog() {
         loadingDialog.show();
 
-
         BottomListDialog.showSimpleDialog(TCMainActivity.this, new BottomListDialog.OnItemClickListener() {
             @Override
             public void onClick(View view, int pos, BottomSheetDialog dialog) {
-                new UpdateUtil(view.getContext(),
-                        "http://106.12.167.128:8391/storage/appversion/1/es-mobile-v1.0.apk",
-                        "es-mobile-v1.0.apk", "aaaa111", "bbbbb222")
-                        .update();
+
                 Toast.makeText(TCMainActivity.this, "You clicked pos is " + pos + " and view id is " + view.getId(), Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
             }
