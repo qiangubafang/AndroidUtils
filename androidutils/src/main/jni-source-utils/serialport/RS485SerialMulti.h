@@ -15,10 +15,12 @@ static const char *TAG = "RS485SerialMulti";
 #define GPIO_ON      _IOR(CMD_FLAG,0x00000001,__u32)
 #define GPIO_OFF     _IOR(CMD_FLAG,0x00000000,__u32)
 
-#define DEBUG false
 
 #include <sys/types.h>
 #include <asm/termbits.h>
+#include <string>
+#include <sstream>
+#include <iomanip>
 
 
 class RS485SerialMulti{
@@ -35,6 +37,7 @@ class RS485SerialMulti{
 
     bool kernelHasDriver;
     bool autoSend = false;
+    bool DEBUG = false;
 
 public:
     int openPort(JNIEnv *env, jobject type, jstring devPath, jstring enableIO, jint baudRate, jint flags, jboolean hasDriver);
@@ -50,7 +53,9 @@ public:
 
     jbyteArray drain(JNIEnv *env, jobject type,jint time);
 
+    void setDebug(bool  debug);
 
+    std::string toHexString(const char* buf, int len);
 };
 
 #endif //ESTOOLCABIN_RS485SERIAL_H

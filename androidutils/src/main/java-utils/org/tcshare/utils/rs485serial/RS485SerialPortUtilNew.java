@@ -132,6 +132,9 @@ public class RS485SerialPortUtilNew {
             e.printStackTrace();
         }
     }
+    public void setNativeDebug(boolean debug){
+        rs485SerialPort.setNativeDebug(debug);
+    }
 
     /**
      * 同步发送

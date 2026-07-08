@@ -16,7 +16,9 @@
 #include <cstring>
 #include <cstdlib>
 #include "RS485SerialMulti.h"
-
+#include <string>
+#include <sstream>
+#include <iomanip>
 
 static speed_t getBaudrate(jint baudrate) {
     switch (baudrate) {
@@ -329,7 +331,14 @@ int RS485SerialMulti::setParity(int databits, int stopbits, int parity)
     tcflush(FD,TCIOFLUSH);
     return 0;
 }
-
+std::string RS485SerialMulti::toHexString(const char* buf, int len) {
+    if (buf == nullptr || len <= 0) return "";
+    std::stringstream ss;
+    for (int i = 0; i < len; ++i) {
+        ss << std::setw(2) << std::setfill('0') << std::hex << (int)(unsigned char)buf[i] << " ";
+    }
+    return ss.str();
+}
 int RS485SerialMulti::rsWrite(char *buf, int dataLen) {
     int writeLen = 0;
 
@@ -338,6 +347,10 @@ int RS485SerialMulti::rsWrite(char *buf, int dataLen) {
     }
 
 
+    if(DEBUG) {
+        std::string hexStr = toHexString(buf, dataLen);
+        LOGD("write Data (Len: %d): %s", dataLen, hexStr.c_str());
+    }
     writeLen = write(FD, buf, dataLen);
     if(DEBUG) LOGD("write FD = %d", FD);
     return writeLen;
@@ -439,5 +452,9 @@ int RS485SerialMulti::sendWaitRecv(char *sendBuf, int sendLen, char *revBuf, int
     len = rsRead(revBuf, readMaxLen, readWaitTime);
 
     return len;
+}
+
+void RS485SerialMulti::setDebug(bool enable) {
+    DEBUG = enable;
 }
 

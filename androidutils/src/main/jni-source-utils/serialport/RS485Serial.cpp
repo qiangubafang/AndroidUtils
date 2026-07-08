@@ -72,3 +72,13 @@ Java_org_tcshare_utils_rs485serial_RS485SerialPort_nativeDrain(JNIEnv *env, jobj
     return nullptr;
 }
 
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_org_tcshare_utils_rs485serial_RS485SerialPort_nativeDebug(JNIEnv *env, jobject thiz, jint id,
+                                                               jboolean debug) {
+    auto it = instanceMaps.find(id); // 查找实例
+    if (it != instanceMaps.end()){
+        return instanceMaps[id]->setDebug(debug);
+    }
+}

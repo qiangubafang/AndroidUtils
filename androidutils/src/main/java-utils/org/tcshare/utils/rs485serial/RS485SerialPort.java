@@ -1,11 +1,14 @@
 package org.tcshare.utils.rs485serial;
 
+import android.util.Log;
+
 /**
  * 485串口通信
  */
 public class RS485SerialPort {
 
 
+    private static final String TAG = RS485SerialPort.class.getSimpleName();
     private int id = -1;
 
     /**
@@ -39,6 +42,7 @@ public class RS485SerialPort {
      * 关闭
      */
     public native void nativeClose(int id);
+    public native void nativeDebug(int id, boolean debug);
 
 
 
@@ -51,6 +55,7 @@ public class RS485SerialPort {
 
     public void close(){
         if(id <= 0){
+            Log.e(TAG, "returned, because serial id <= 0!");
             return;
         }
         nativeClose(id);
@@ -58,6 +63,7 @@ public class RS485SerialPort {
 
     public byte[] drain(int time){
         if(id <= 0){
+            Log.e(TAG, "returned, because serial id <= 0!");
             return new byte[0];
         }
         return nativeDrain(id, time);
@@ -65,8 +71,17 @@ public class RS485SerialPort {
 
     public byte[] send(byte[] sendArray, int revBufSize, int readWaitTime){
         if(id <= 0){
+            Log.e(TAG, "returned, because serial id <= 0!");
             return new byte[0];
         }
         return nativeSend(id, sendArray, revBufSize, readWaitTime);
+    }
+
+    public void setNativeDebug(boolean debug) {
+        if(id <= 0){
+            Log.e(TAG, "returned, because serial id <= 0!");
+            return;
+        }
+        nativeDebug(id, debug);
     }
 }
