@@ -96,7 +96,7 @@ public class TCMainActivity extends AppCompatActivity {
         testRS485_1_2();
 
 
-        RS485SerialPortUtilNewReceiveOnly rsp = new RS485SerialPortUtilNewReceiveOnly(10);
+/*        RS485SerialPortUtilNewReceiveOnly rsp = new RS485SerialPortUtilNewReceiveOnly(10);
         rsp.open(9600, "/dev/ttyS0", null, false);
         Log.e("KK", "open ret:" + rsp.isOpenSerialSuccess());
         rsp.setOnReceiveCallback(new RS485SerialPortUtilNewReceiveOnly.OnReceiveCallback() {
@@ -104,10 +104,10 @@ public class TCMainActivity extends AppCompatActivity {
             public void onReceive(byte[] data) {
                 Log.e("MM", "recv:" + HexDump.toHexString(data));
             }
-        });
+        });*/
 
         // 需要设置时间权限（系统保护权限）
-       new Thread() {
+/*       new Thread() {
             @Override
             public void run() {
                 super.run();
@@ -119,7 +119,7 @@ public class TCMainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-        }.start();
+        }.start();*/
 
 /*
         WebSocketManager.getInstance().init("ws://39.91.86.71:20000", 10_000, new IReceiveMessage() {

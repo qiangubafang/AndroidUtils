@@ -204,6 +204,8 @@ public class TCUSBSerialPortActivity extends Activity {
         showUSBSelectDialog();
     }
 
+
+
     public final BroadcastReceiver usbReceiver = new BroadcastReceiver() {
 
         public void onReceive(Context context, Intent intent) {
@@ -389,6 +391,7 @@ public class TCUSBSerialPortActivity extends Activity {
 
     @Override
     protected void onDestroy() {
+        unregisterReceiver(usbReceiver);
         if (reader != null) {
             reader.interrupt();
         }

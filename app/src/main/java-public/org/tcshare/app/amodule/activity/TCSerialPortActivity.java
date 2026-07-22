@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.tcshare.app.R;
+import org.tcshare.utils.ToastUtil;
 import org.tcshare.utils.hex.DecoderException;
 import org.tcshare.utils.hex.Hex;
 import org.tcshare.utils.hex.HexDump;
@@ -262,6 +263,7 @@ public class TCSerialPortActivity extends Activity {
                 return "".equals(sendStr) ? null : Hex.decodeHex(sendStr);
             } catch (DecoderException e) {
                 e.printStackTrace();
+                ToastUtil.showMessage(this, "非法数据!" + e.getMessage());
             }
         }
         return "".equals(sendStr) ? null : sendStr.getBytes();
