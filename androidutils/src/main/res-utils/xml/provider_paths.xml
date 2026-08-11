@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!--内置SD卡 Environment.getExternalStorageDirectory() .表示共享所有的目录，也可以指定共享的目录-->
-    <external-path
-        name="external-path"
-        path="." />
-    <!--内置SD卡 Context.getExternalCacheDir() .表示共享所有的目录，也可以指定共享的目录-->
-    <external-cache-path
-        name="external-cache-path"
-        path="." />
-    <!--内置SD卡 Context.getExternalFilesDir(null) .表示共享所有的目录，也可以指定共享的目录-->
-    <external-files-path
-        name="external-files-path"
-        path="." />
-    <!--data目录下 Context.getFilesDir() .表示共享所有的目录，也可以指定共享的目录-->
-    <files-path
-        name="files_path"
-        path="." />
-    <!--data缓存目录 Context.getCacheDir() .表示共享所有的目录，也可以指定共享的目录-->
-    <cache-path
-        name="cache-path"
-        path="." />
-    <!--这个标签Android官方文档中是没有提及，Android设备的根目录，该目录下包含着手机内部存储器，外置SD卡等所有文件的目录-->
-    <root-path
-        name="name"
-        path="." />
-</resources>
+<!--
+修改为AndroidX 及Android 10+ 以上的写法
+
+用途示例：
+1. 下载了APP，让系统安装器安装。但系统安装器是独立应用，必须通过 FileProvider 授权，才能读私有目录里的 .apk 文件
+2. 调用系统相机拍照。 通过 FileProvider，告诉相机存储位置，相机才能写入到此位置。
+3. 调用微信分享文件。 也需要读取我们的目录。
+ -->
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 1. 应用专属沙盒存储（首选路径）：对应 Context.getExternalFilesDir(null) -->
+    <!-- 绝大多数拍照、下载更新的本地 APK 应该保存在这里，安全且无需动态申请存储权限 -->
+    <external-files-path name="app_external_files" path="." />
+
+    <!-- 2. 应用专属外部缓存：对应 Context.getExternalCacheDir() -->
+    <!-- 适合存放一些临时裁剪的图片、下载的临时切片等，系统空间不足时会被自动清理 -->
+    <external-cache-path name="app_external_cache" path="." />
+
+    <!-- 3. 应用内部私有存储：对应 Context.getFilesDir() -->
+    <!-- 这里的物理路径在 /data/data/包名/files 下，其他任何应用绝对无权访问，安全性最高 -->
+    <files-path name="app_internal_files" path="." />
+
+    <!-- 4. 应用内部私有缓存：对应 Context.getCacheDir() -->
+    <!-- 对应 /data/data/包名/cache 目录 -->
+    <cache-path name="app_internal_cache" path="." />
+
+</paths>
