@@ -182,9 +182,11 @@ public class PacketCommonUtil implements IPacket {
     }
 
     public synchronized void preparePacket(byte[] bytes, IPacketCallback cb) {
-        if(DEBUG) Log.e(TAG, "recv bytes:" + HexDump.dumpHexString(bytes));
-        for (byte b : bytes) {
-            revBytesCache.add(b);
+        if(bytes != null) {
+            if (DEBUG) Log.e(TAG, "recv bytes:" + HexDump.dumpHexString(bytes));
+            for (byte b : bytes) {
+                revBytesCache.add(b);
+            }
         }
 
         int ret = alignPacketStart();  // 对齐包头，并检验长度
@@ -216,6 +218,9 @@ public class PacketCommonUtil implements IPacket {
             cb.onPacketReady(payload);
         }
 
+        if(revBytesCache.size() > FIX_PRE_LEN + FIX_SUF_LEN){
+            preparePacket(null, cb);
+        }
     }
 
     /**

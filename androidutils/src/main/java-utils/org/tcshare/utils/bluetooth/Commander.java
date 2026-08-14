@@ -169,8 +169,10 @@ public class Commander {
     }
 
     public synchronized void preparePacket(byte[] bytes, PacketReadyCallBack cb) {
-        for (byte b : bytes) {
-            revBytesCache.add(b);
+        if(bytes != null) {
+            for (byte b : bytes) {
+                revBytesCache.add(b);
+            }
         }
 
         int ret = alignPacketStart(); // 数据包前4个字节（包头）是匹配的
@@ -197,6 +199,10 @@ public class Commander {
         // 长度满足了，无论是否有效，都从缓存里删除该数据包长度的数据
         for (int i = 0; i < packet.length; i++) {
             revBytesCache.removeFirst();
+        }
+
+        if(revBytesCache.size() > FIX_PRE_LEN + FIX_SUF_LEN){
+            preparePacket(null, cb);
         }
     }
 

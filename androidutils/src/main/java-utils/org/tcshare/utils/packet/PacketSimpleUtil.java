@@ -150,8 +150,10 @@ public class PacketSimpleUtil implements IPacket {
     }
 
     public synchronized void preparePacket(byte[] bytes, IPacketCallback cb) {
-        for (byte b : bytes) {
-            revBytesCache.add(b);
+        if(bytes != null) {
+            for (byte b : bytes) {
+                revBytesCache.add(b);
+            }
         }
 
         int ret = alignPacketStart(); // 数据包包头 是匹配的
@@ -187,6 +189,9 @@ public class PacketSimpleUtil implements IPacket {
         // 长度满足了，无论是否有效，都从缓存里删除该数据包长度的数据
         for (int i = 0; i < packet.length; i++) {
             revBytesCache.removeFirst();
+        }
+        if(revBytesCache.size() > FIX_PRE_LEN + FIX_SUF_LEN){
+            preparePacket(null, cb);
         }
     }
 
